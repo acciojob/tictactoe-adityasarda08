@@ -1,25 +1,87 @@
-<div class="container">
-  <h1>Tic Tac Toe</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tic Tac Toe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
 
-  <div id="player-form">
-    <input id="player1" placeholder="enter name" />
-    <input id="player2" placeholder="enter name" />
-    <button id="submit">Start Game</button>
-  </div>
+    .container {
+      margin-top: 30px;
+    }
 
-  <div id="game" style="display:none;">
-    <div class="message"></div>
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 5px;
+      justify-content: center;
+      margin-top: 20px;
+    }
 
-    <div class="board">
-      <div class="cell" id="1"></div>
-      <div class="cell" id="2"></div>
-      <div class="cell" id="3"></div>
-      <div class="cell" id="4"></div>
-      <div class="cell" id="5"></div>
-      <div class="cell" id="6"></div>
-      <div class="cell" id="7"></div>
-      <div class="cell" id="8"></div>
-      <div class="cell" id="9"></div>
+    .cell {
+      width: 100px;
+      height: 100px;
+      background: pink;
+      font-size: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid black;
+    }
+
+    .message {
+      font-size: 20px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Tic Tac Toe</h1>
+
+    <!-- Player Input Form -->
+    <div id="player-form">
+      <input id="player1" placeholder="enter name" />
+      <input id="player2" placeholder="enter name" />
+      <button id="submit">Start Game</button>
     </div>
+
+    <!-- Game Area -->
+    <div id="game" style="display:none;">
+      <div class="message"></div>
+
+      <div class="board">
+        <div class="cell" id="1"></div>
+        <div class="cell" id="2"></div>
+        <div class="cell" id="3"></div>
+        <div class="cell" id="4"></div>
+        <div class="cell" id="5"></div>
+        <div class="cell" id="6"></div>
+        <div class="cell" id="7"></div>
+        <div class="cell" id="8"></div>
+        <div class="cell" id="9"></div>
+      </div>
+    </div>
+
   </div>
-</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

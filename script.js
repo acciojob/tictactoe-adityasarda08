@@ -12,6 +12,18 @@ let currentPlayer = "";
 let currentSymbol = "x";
 let gameOver = false;
 
+// Winning combinations
+const winPatterns = [
+  ["1", "2", "3"],
+  ["4", "5", "6"],
+  ["7", "8", "9"],
+  ["1", "4", "7"],
+  ["2", "5", "8"],
+  ["3", "6", "9"],
+  ["1", "5", "9"],
+  ["3", "5", "7"]
+];
+
 submitBtn.addEventListener("click", () => {
   player1 = player1Input.value.trim();
   player2 = player2Input.value.trim();
@@ -23,8 +35,19 @@ submitBtn.addEventListener("click", () => {
 
   currentPlayer = player1;
   currentSymbol = "x";
+  gameOver = false;
+
+  // IMPORTANT: exact message
   message.innerText = `${currentPlayer}, you're up`;
 });
+
+function checkWinner(symbol) {
+  return winPatterns.some(pattern =>
+    pattern.every(id =>
+      document.getElementById(id).innerText === symbol
+    )
+  );
+}
 
 cells.forEach(cell => {
   cell.addEventListener("click", () => {
@@ -32,6 +55,13 @@ cells.forEach(cell => {
 
     cell.innerText = currentSymbol;
 
+    if (checkWinner(currentSymbol)) {
+      gameOver = true;
+      message.innerText = `${currentPlayer} congratulations you won!`;
+      return;
+    }
+
+    // Switch turn
     if (currentSymbol === "x") {
       currentSymbol = "o";
       currentPlayer = player2;
